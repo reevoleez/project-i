@@ -1,96 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Forum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .nav-link {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #007bff;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .post {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s;
+            position: relative;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .comment {
+            margin-left: 20px;
+            border-left: 2px solid #ccc;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+        .username {
+            font-weight: bold;
+            margin-right: 5px;
+            font-size: 1em;
+        }
+        .comment-actions {
+            font-size: 0.9em;
+            color: #007bff;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        .dropdown-menu {
+            text-align: center;
+        }
+        .reaction-icons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .reaction-icons .fa {
+            margin-right: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .reaction-icons .fa:hover {
+            color: #007bff;
+        }
+        .comment-box, .reply-box {
+            margin-top: 10px;
+        }
+        .add-comment {
+            margin-top: 10px;
+        }
+        .quoted-text {
+            border-left: 5px solid #007bff;
+            padding-left: 10px;
+            margin: 10px 0;
+        }
+        .tree-animation {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: -1;
+            background: url('tree.gif') repeat-x bottom center;
+            height: 100px;
+            animation: treeGrow 5s ease-out infinite;
+        }
+        @keyframes treeGrow {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-family: 'Courier New', Courier, monospace;">Mental Health Forum</h1>
+            <p>Your safe space to express your feelings anonymously.</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" onclick="showSection('home')">Home</a></li>
+                    <li><a class="dropdown-item" onclick="showSection('create-post')">Create Post</a></li>
+                    <li><a class="dropdown-item" onclick="showSection('view-posts')">View Posts</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="home" class="section active" style="text-align: center;">
+            <h2 style="font-family: 'Impact', sans-serif;">Welcome</h2>
+            <p style="font-size: 1.2em;">Welcome to the Mental Health Forum, a safe space to share your thoughts and feelings anonymously. Our goal is to provide a supportive community where everyone can express themselves freely.</p>
+            <div class="tree-animation"></div>
+        </div>
+        
+        <div id="create-post" class="section">
+            <h2 style="font-family: 'Georgia', serif;">Create Post</h2>
+            <form id="postForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="postContent" class="form-label">Post</label>
+                    <textarea class="form-control" id="postContent" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="postImage" class="form-label">Upload Image</label>
+                    <input type="file" class="form-control" id="postImage" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-custom">Post</button>
+            </form>
+        </div>
+        
+        <div id="view-posts" class="section">
+            <h2 style="font-family: 'Trebuchet MS', sans-serif;">Posts</h2>
+            <div id="postsContainer"></div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        const postsContainer = document.getElementById('postsContainer');
+        const postForm = document.getElementById('postForm');
+
+        postForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const postContent = document.getElementById('postContent').value;
+            const postImageInput = document.getElementById('postImage');
+            let postImageUrl = '';
+            
+            if (postImageInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    postImageUrl = e.target.result;
+                    createPost(username, postContent, postImageUrl);
+                }
+                reader.readAsDataURL(postImageInput.files[0]);
+            } else {
+                createPost(username, postContent, postImageUrl);
+            }
+        });
+
+        function createPost(username, postContent, postImageUrl) {
+            const post = document.createElement('div');
+            post.className = 'post';
+            post.innerHTML = `
+                <h3 class="username">${username}</h3>
+                <div class="quoted-text">${postContent}</div>
+                ${postImageUrl ? `<img src="${postImageUrl}" class="img-fluid" alt="Post Image">` : ''}
+                <small>${new Date().toLocaleString()}</small>
+                <div class="reaction-icons">
+                    <i class="fas fa-thumbs-up" onclick="react(this)"></i>
+                    <i class="fas fa-thumbs-down" onclick="react(this)"></i>
+                    <i class="fas fa-heart" onclick="react(this)"></i>
+                </div>
+                <div class="like-count">0</div>
+                <div class="comment-section">
+                    <div class="comment-actions">
+                        <i class="fas fa-chevron-down" onclick="toggleComments(this)"></i> Comments
+                    </div>
+                    <div class="comments" style="display: none;">
+                        <input type="text" class="form-control comment-box" placeholder="Add a comment">
+                        <button class="btn btn-primary add-comment" onclick="addComment(this, '${username}')">Add Comment</button>
+                    </div>
+                </div>
+            `;
+            postsContainer.appendChild(post);
+
+            // Set timer to delete post after// Set timer to delete post after 48 hours
+            setTimeout(() => {
+                post.remove();
+            }, 48 * 60 * 60 * 1000); // 48 hours in milliseconds
+
+            postForm.reset();
+            showSection('view-posts');
+        }
+
+        function toggleComments(button) {
+            const comments = button.parentNode.nextElementSibling;
+            if (comments.style.display === 'none') {
+                comments.style.display = 'block';
+                button.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            } else {
+                comments.style.display = 'none';
+                button.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            }
+        }
+
+        function react(icon) {
+            const likeCount = icon.parentNode.nextElementSibling;
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+        }
+
+        function addComment(button, postUsername) {
+            const post = button.closest('.post');
+            const commentBox = post.querySelector('.comment-box');
+            const commentContent = commentBox.value.trim();
+            if (commentContent !== '') {
+                const commentsContainer = post.querySelector('.comments');
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+                comment.innerHTML = `
+                    <p><strong>${postUsername}</strong>: ${commentContent}</p>
+                    <small>${new Date().toLocaleString()}</small>
+                    <div class="reply-actions">
+                        <button class="btn btn-sm btn-secondary reply-button" onclick="toggleReplyBox(this)">Reply</button>
+                        <div class="reply-box" style="display: none;">
+                            <input type="text" class="form-control reply-input" placeholder="Reply...">
+                            <button class="btn btn-sm btn-primary add-reply" onclick="addReply(this, '${postUsername}')">Add Reply</button>
+                        </div>
+                    </div>
+                    <div class="replies"></div>
+                `;
+                commentsContainer.appendChild(comment);
+                commentBox.value = '';
+            }
+        }
+
+        function toggleReplyBox(button) {
+            const replyBox = button.nextElementSibling;
+            replyBox.style.display = replyBox.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function addReply(button, postUsername) {
+            const post = button.closest('.post');
+            const replyBox = button.parentNode.querySelector('.reply-input');
+            const replyContent = replyBox.value.trim();
+            if (replyContent !== '') {
+                const repliesContainer = button.closest('.comment').querySelector('.replies');
+                const reply = document.createElement('div');
+                reply.className = 'reply';
+                reply.innerHTML = `
+                    <p><strong>${postUsername}</strong>: ${replyContent}</p>
+                    <small>${new Date().toLocaleString()}</small>
+                `;
+                repliesContainer.appendChild(reply);
+                replyBox.value = '';
+            }
+        }
+    </script>
+</body>
 </html>
